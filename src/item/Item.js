@@ -1980,8 +1980,8 @@ new function() { // Injection scope for hit-test functions shared with project
      */
 
     _hitTest: function(point, options, parentViewMatrix) {
-        if (this._locked || !this._visible && !options.hidden || this._guide && !options.guides
-                || this.isEmpty()) {
+        if (this._locked || !this._visible && !options.hidden 
+                || this._guide && !options.guides || this.isEmpty()) {
             return null;
         }
 
