@@ -1948,6 +1948,8 @@ new function() { // Injection scope for hit-test functions shared with project
      *     the bounding rectangle of items ({@link Item#bounds})
      * @option options.guides {Boolean} hit-test items that have {@link
      *     Item#guide} set to `true`
+     * @option options.hidden {Boolean} hit-test items that have {@link 
+     *     Item#visible} set to `false`
      * @option options.selected {Boolean} only hit selected items
      *
      * @param {Point} point the point where the hit-test should be performed
@@ -1978,7 +1980,7 @@ new function() { // Injection scope for hit-test functions shared with project
      */
 
     _hitTest: function(point, options, parentViewMatrix) {
-        if (this._locked || !this._visible || this._guide && !options.guides
+        if (this._locked || !this._visible && !options.hidden || this._guide && !options.guides
                 || this.isEmpty()) {
             return null;
         }
@@ -2014,7 +2016,8 @@ new function() { // Injection scope for hit-test functions shared with project
         }
 
         // See if we should check self (own content), by filtering for type,
-        // guides and selected items if that's required.
+        // 
+        and selected items if that's required.
         var checkSelf = !(options.guides && !this._guide
                 || options.selected && !this.isSelected()
                 // Support legacy Item#type property to match hyphenated
