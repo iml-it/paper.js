@@ -2016,8 +2016,7 @@ new function() { // Injection scope for hit-test functions shared with project
         }
 
         // See if we should check self (own content), by filtering for type,
-        // 
-        and selected items if that's required.
+        // and selected items if that's required.
         var checkSelf = !(options.guides && !this._guide
                 || options.selected && !this.isSelected()
                 // Support legacy Item#type property to match hyphenated
